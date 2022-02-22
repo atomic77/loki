@@ -8,6 +8,8 @@
 
 # Loki: like Prometheus, but for logs.
 
+Hello git world!
+
 Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system inspired by [Prometheus](https://prometheus.io/).
 It is designed to be very cost effective and easy to operate.
 It does not index the contents of the logs, but rather a set of labels for each log stream.
