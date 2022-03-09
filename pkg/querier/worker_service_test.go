@@ -137,6 +137,12 @@ func Test_InitQuerierService(t *testing.T) {
 					FrontendAddress: "http://example.com",
 				},
 			}
+			withFrontendConfigDnsDisabled := WorkerServiceConfig{
+				QuerierWorkerConfig: &querier_worker.Config{
+					FrontendAddress:  "http://example.com",
+					DisableDNSLookup: true,
+				},
+			}
 			withSchedulerConfig := WorkerServiceConfig{
 				QuerierWorkerConfig: &querier_worker.Config{
 					SchedulerAddress: "http://example.com",
@@ -145,6 +151,7 @@ func Test_InitQuerierService(t *testing.T) {
 
 			for _, config := range []WorkerServiceConfig{
 				withFrontendConfig,
+				withFrontendConfigDnsDisabled,
 				withSchedulerConfig,
 			} {
 				_, workerService := testContext(config, nil)

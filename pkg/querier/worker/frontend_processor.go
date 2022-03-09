@@ -54,6 +54,7 @@ func (fp *frontendProcessor) notifyShutdown(ctx context.Context, conn *grpc.Clie
 
 // runOne loops, trying to establish a stream to the frontend to begin request processing.
 func (fp *frontendProcessor) processQueriesOnSingleStream(ctx context.Context, conn *grpc.ClientConn, address string) {
+	level.Debug(fp.log).Log("msg", "Connecting to frontend", "address", address)
 	client := frontendv1pb.NewFrontendClient(conn)
 
 	backoff := backoff.New(ctx, processorBackoffConfig)
